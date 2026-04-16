@@ -1,0 +1,7 @@
+services:
+  keycrm-telegram-bot:
+    build: .
+    container_name: keycrm-telegram-bot
+    env_file:
+      - .env
+    restart: unless-stopped
