@@ -17,7 +17,7 @@ Copy `.env.example` to `.env` and fill in the secrets:
 ```env
 TELEGRAM_BOT_TOKEN=...
 KEYCRM_API_TOKEN=...
-TELEGRAM_TARGET_CHAT_ID=500567367
+TELEGRAM_TARGET_CHAT_ID=
 ```
 
 If `TELEGRAM_TARGET_CHAT_ID` is empty, the bot replies to the chat that triggered `/spisok`.
