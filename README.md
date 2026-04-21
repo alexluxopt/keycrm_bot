@@ -85,7 +85,6 @@ docker compose up -d --build
 
 ## Notes
 
-- The app reads credentials only from environment variables and does not hardcode the values from the n8n export.
 - Pagination is handled across multiple KeyCRM pages instead of being limited to page 1 only.
 - Telegram messages are split into chunks if the report exceeds Telegram message limits.
 - The KeyCRM bearer token from the exported n8n workflow should be rotated because it was embedded in the JSON export.
