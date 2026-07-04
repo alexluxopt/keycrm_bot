@@ -12,8 +12,13 @@ class KeyCRMError(RuntimeError):
 
 
 class KeyCRMClient:
-    def __init__(self, settings: Settings) -> None:
+    def __init__(
+        self,
+        settings: Settings,
+        transport: httpx.AsyncBaseTransport | None = None,
+    ) -> None:
         self._settings = settings
+        self._transport = transport
 
     async def fetch_orders(self) -> list[dict[str, Any]]:
         orders: list[dict[str, Any]] = []
@@ -33,6 +38,7 @@ class KeyCRMClient:
             async with httpx.AsyncClient(
                 headers=headers,
                 timeout=self._settings.keycrm_request_timeout_seconds,
+                transport=self._transport,
             ) as client:
                 for page in range(1, self._settings.keycrm_max_pages + 1):
                     response = await client.get(url, params={**params, "page": str(page)})
